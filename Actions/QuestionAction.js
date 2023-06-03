@@ -2,18 +2,22 @@ $(function() {
     var QuestionAction = {
         init : function() {
             this.cashDom();
-            this.visualizeButtons();
-            this.$quizCard.hide();
+            this.initialeComponentVisualization();           
             this.registerListners();
         },
         cashDom : function() {
             this.$quizCard = $('#QuizCard');
             this.$cancelButton = $('#cancelButton'); 
-            this.$saveButton = $('#saveButton');         
+            this.$saveButton = $('#saveButton');  
+            this.$signUpArea = $('#signUpArea');
+            this.$signInArea = $('#signInArea');       
         },
-        visualizeButtons : function(){
+        initialeComponentVisualization : function(){
             this.$saveButton.hide();
             this.$cancelButton.hide(); 
+            this.$quizCard.hide();
+            this.$signUpArea.hide();
+            this.$signInArea.hide();
         },
         registerListners : function(){
             QuestionListner.registerListners();

@@ -1,15 +1,27 @@
 var QuestionHandlers = (function(){
+   
     var $addButton;
     var $cancelButton;
     var $saveButton; 
     var $quizCard;
+    var $buttonView;
+    var $signUpArea;
+    var $signInArea;
+    var isInitialized = false;
 
     function _init(){
-        $addButton= $('#addButton');
-        $cancelButton = $('#cancelButton'); 
-        $saveButton = $('#saveButton'); 
-        $quizCard = $('#QuizCard');  
+        if (!isInitialized) {
+            $addButton = $('#addButton');
+            $signUpArea =$('#signUpArea');
+            $cancelButton = $('#cancelButton'); 
+            $saveButton = $('#saveButton'); 
+            $quizCard = $('#QuizCard');  
+            $buttonView = $('#ButtonView');
+            $signInArea =$('#signInArea');
+            isInitialized = true;
+        }
     }
+
     function handleAddQuestionClick(){
         _init();
         $quizCard.show();
@@ -18,6 +30,7 @@ var QuestionHandlers = (function(){
         $saveButton.show();
     }
     function handleCancelQuestion(){
+        _init();
         $quizCard.hide();
         $addButton.show();
         $cancelButton.hide();
@@ -26,10 +39,26 @@ var QuestionHandlers = (function(){
     function handleSaveQuestion(){
        setTimeout(()=>{alert('tester');},5000);
     }
+    function handleSignUpViewVisit(){
+        _init();
+        $buttonView.hide();
+        $signUpArea.show();
+        $signInArea.hide();
+        $quizCard.hide();
+    }
+    function handleLoginViewVisit(){
+        _init();
+        $buttonView.hide();
+        $quizCard.hide();
+        $signUpArea.hide();
+        $signInArea.show();
+    }
     return {
         handleAddQuestionClick,
         handleCancelQuestion,
-        handleSaveQuestion
+        handleSaveQuestion,
+        handleSignUpViewVisit,
+        handleLoginViewVisit
     };
   
 })();
